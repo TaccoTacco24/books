@@ -74,8 +74,7 @@
             border: 1px solid #444;
             border-radius: 6px;
             padding: 8px 12px;
-            font-size: 1.5em; /* Testo più grande */
-            font-weight: bold; /* Testo in grassetto */
+            font-size: 1em;
             color: #fff;
             margin: 0 5px;
         }
@@ -92,8 +91,7 @@
             font-weight: bold;
         }
         .ip-widget .info-section .flag {
-            width: 1.5em;
-            height: 1.5em;
+            font-size: 1.5em;
             margin-right: 10px;
             vertical-align: middle;
         }
@@ -294,14 +292,8 @@
 
                     const positionElement = document.getElementById('ip-position');
                     const country = data.country;
-                    const flagUrl = `https://flagcdn.com/w32/${country.toLowerCase()}.png`;
-                    const flagImg = document.createElement('img');
-                    flagImg.src = flagUrl;
-                    flagImg.className = 'flag';
-                    flagImg.alt = `Flag of ${data.country_name || 'Unknown'}`;
-
-                    positionElement.textContent = `${data.city}, ${data.region}, ${data.country}`;
-                    positionElement.prepend(flagImg);
+                    const flagEmoji = getFlagEmoji(country);
+                    positionElement.textContent = `${flagEmoji} ${data.city}, ${data.region}, ${data.country}`;
                 })
                 .catch(error => {
                     document.getElementById('ip-details').textContent = 'Impossibile ottenere l\'indirizzo IP';
@@ -309,6 +301,15 @@
                     document.getElementById('ip-position').textContent = 'N/A';
                     console.error('Errore nella richiesta:', error);
                 });
+        }
+
+        // Funzione per ottenere l'emoji della bandiera della nazione
+        function getFlagEmoji(countryCode) {
+            const codePoints = countryCode
+                .toUpperCase()
+                .split('')
+                .map(char => 127397 + char.charCodeAt(0));
+            return String.fromCodePoint(...codePoints);
         }
 
         // Chiama la funzione per ottenere l'indirizzo IP e i dettagli al caricamento della pagina

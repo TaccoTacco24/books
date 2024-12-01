@@ -43,6 +43,60 @@
             border-top: 2px solid #333;
             margin: 20px 0;
         }
+        .ip-widget {
+            background-color: #222;
+            border: 1px solid #444;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px; /* Spazio sotto il widget */
+            box-sizing: border-box; /* Assicura che il padding sia incluso nella larghezza */
+        }
+        .ip-widget h2 {
+            color: #ffcc00;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .ip-widget p {
+            font-size: 1em;
+            color: #ccc;
+        }
+        .ip-widget .ip-details {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .ip-widget .ip-number {
+            background-color: #333;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 1.5em; /* Testo più grande */
+            font-weight: bold; /* Testo in grassetto */
+            color: #fff;
+            margin: 0 5px;
+        }
+        .ip-widget .info-section {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .ip-widget .info-section h3 {
+            color: #ffcc00;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .ip-widget .info-section .info-label {
+            font-weight: bold;
+        }
+        .ip-widget .info-section .flag {
+            width: 1.5em;
+            height: 1.5em;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
         .container {
             display: flex;
             justify-content: center;
@@ -175,6 +229,20 @@
         <span class="quote-author">- Anonimo</span>
     </div>
     <div class="divider"></div>
+    <div class="ip-widget" id="ip-widget">
+        <h2>Il tuo indirizzo IP</h2>
+        <div class="ip-details" id="ip-details">
+            <!-- Le cifre dell'IP verranno inserite qui -->
+        </div>
+        <div class="info-section">
+            <h3>Operatore</h3>
+            <p id="ip-operator">Caricamento in corso...</p>
+        </div>
+        <div class="info-section">
+            <h3>Posizione</h3>
+            <p id="ip-position">Caricamento in corso...</p>
+        </div>
+    </div>
     <div class="container">
         <div class="box" onclick="window.location.href='https://mega.nz/folder/KyRwWQrL#UqqP5cpEC24QAmx7C8aRQw'">
             <a href="https://mega.nz/folder/KyRwWQrL#UqqP5cpEC24QAmx7C8aRQw">
@@ -207,6 +275,45 @@
             </a>
         </div>
     </div>
+
+    <script>
+        // Funzione per ottenere l'indirizzo IP e i dettagli utilizzando ipinfo.io
+        function getIPAddress() {
+            fetch('https://ipinfo.io/json')
+                .then(response => response.json())
+                .then(data => {
+                    const ip = data.ip;
+                    const ipParts = ip.split('.');
+                    const ipDetails = document.getElementById('ip-details');
+                    const ipNumber = document.createElement('div');
+                    ipNumber.className = 'ip-number';
+                    ipNumber.textContent = ipParts.join('.');
+                    ipDetails.appendChild(ipNumber);
+
+                    document.getElementById('ip-operator').textContent = data.org || 'N/A';
+
+                    const positionElement = document.getElementById('ip-position');
+                    const country = data.country;
+                    const flagUrl = `https://flagcdn.com/w32/${country.toLowerCase()}.png`;
+                    const flagImg = document.createElement('img');
+                    flagImg.src = flagUrl;
+                    flagImg.className = 'flag';
+                    flagImg.alt = `Flag of ${data.country_name || 'Unknown'}`;
+
+                    positionElement.textContent = `${data.city}, ${data.region}, ${data.country}`;
+                    positionElement.prepend(flagImg);
+                })
+                .catch(error => {
+                    document.getElementById('ip-details').textContent = 'Impossibile ottenere l\'indirizzo IP';
+                    document.getElementById('ip-operator').textContent = 'N/A';
+                    document.getElementById('ip-position').textContent = 'N/A';
+                    console.error('Errore nella richiesta:', error);
+                });
+        }
+
+        // Chiama la funzione per ottenere l'indirizzo IP e i dettagli al caricamento della pagina
+        window.onload = getIPAddress;
+    </script>
 
 </body>
 </html>

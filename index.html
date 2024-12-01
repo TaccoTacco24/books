@@ -10,20 +10,21 @@
             background-color: #121212;
             margin: 0;
             padding: 0;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             height: 100vh;
-            color: #fff;
-            overflow: hidden;
-            position: relative;
         }
         h1 {
             color: #ffcc00;
             font-size: 4em; /* Titolo un po' più grande */
             font-family: 'Courier New', Courier, monospace;
             margin-bottom: 20px;
+            margin-top: 20px;
         }
         .quote {
             font-family: 'Courier New', Courier, monospace;
@@ -55,7 +56,7 @@
             border-radius: 12px;
             padding: 30px;
             text-align: center;
-            width: 300px;
+            width: calc(33.333% - 40px); /* Calcolo per 3 riquadri in riga */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s, z-index 0.3s, box-shadow 0.3s, background-color 0.3s, opacity 0.3s;
             cursor: pointer;
@@ -96,17 +97,22 @@
         .box:nth-child(4):hover::after {
             box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1); /* Bianco */
         }
+        .box:nth-child(5):hover::after {
+            box-shadow: 0 0 0 20px rgba(0, 0, 255, 0.1); /* Blu */
+        }
         .box:hover ~ .box {
             opacity: 0.5;
         }
         .box:hover + .box,
         .box:hover + .box + .box,
-        .box:hover + .box + .box + .box {
+        .box:hover + .box + .box + .box,
+        .box:hover + .box + .box + .box + .box {
             opacity: 0.5;
         }
         .box:hover + .box:hover,
         .box:hover + .box + .box:hover,
-        .box:hover + .box + .box + .box:hover {
+        .box:hover + .box + .box + .box:hover,
+        .box:hover + .box + .box + .box + .box:hover {
             opacity: 1;
         }
         .box a {
@@ -136,23 +142,20 @@
         .dot4 {
             background-color: #ffffff; /* Bianco */
         }
+        .dot5 {
+            background-color: #0000ff; /* Blu */
+        }
         @media (max-width: 768px) {
+            body {
+                justify-content: flex-start;
+                height: auto;
+            }
             .container {
                 flex-direction: column;
                 align-items: center;
             }
-            .box:nth-child(4) {
-                margin-top: 40px;
-            }
-        }
-        @media (min-width: 769px) {
-            .box:nth-child(4) {
-                margin-top: 40px;
-                margin-left: 0;
-                margin-right: 0;
-                width: 100%;
-                max-width: 300px;
-                align-self: center;
+            .box {
+                width: 90%; /* Adatta la larghezza per mobile */
             }
         }
     </style>
@@ -188,6 +191,12 @@
             <a href="https://www.example.com/altro">
                 <span class="dot dot4"></span>
                 Altro
+            </a>
+        </div>
+        <div class="box" onclick="window.location.href='https://www.example.com/annas-archive'">
+            <a href="https://www.example.com/annas-archive">
+                <span class="dot dot5"></span>
+                Anna's Archive
             </a>
         </div>
     </div>

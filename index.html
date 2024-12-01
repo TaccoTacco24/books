@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color: #121212;
             margin: 0;
             padding: 0;
             display: flex;
@@ -15,9 +15,10 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            color: #fff;
         }
         h1 {
-            color: #333;
+            color: #ffcc00;
         }
         .container {
             display: flex;
@@ -26,24 +27,45 @@
             gap: 20px;
         }
         .box {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
+            background-color: #222;
+            border: 1px solid #444;
+            border-radius: 12px;
+            padding: 30px;
             text-align: center;
-            width: 200px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             transition: transform 0.2s, box-shadow 0.2s;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .box:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
         }
         .box a {
             text-decoration: none;
-            color: #333;
+            color: #fff;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        .dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: inline-block;
+        }
+        .dot1 {
+            background-color: #ffcc00;
+        }
+        .dot2 {
+            background-color: #00ffcc;
+        }
+        .dot3 {
+            background-color: #ff00cc;
         }
     </style>
 </head>
@@ -52,13 +74,22 @@
     <h1>Libri del Tacco</h1>
     <div class="container">
         <div class="box" onclick="window.location.href='https://www.example.com/libro1'">
-            <a href="https://www.example.com/libro1">Libro 1</a>
+            <a href="https://www.example.com/libro1">
+                <span class="dot dot1"></span>
+                Libro 1
+            </a>
         </div>
         <div class="box" onclick="window.location.href='https://www.example.com/libro2'">
-            <a href="https://www.example.com/libro2">Libro 2</a>
+            <a href="https://www.example.com/libro2">
+                <span class="dot dot2"></span>
+                Libro 2
+            </a>
         </div>
         <div class="box" onclick="window.location.href='https://www.example.com/libro3'">
-            <a href="https://www.example.com/libro3">Libro 3</a>
+            <a href="https://www.example.com/libro3">
+                <span class="dot dot3"></span>
+                Libro 3
+            </a>
         </div>
     </div>
 

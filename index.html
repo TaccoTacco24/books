@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Libri del Tacco</title>
+    <title>Tacco's Bay</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #121212;
             margin: 0;
             padding: 0;
@@ -16,15 +16,38 @@
             justify-content: center;
             height: 100vh;
             color: #fff;
+            overflow: hidden;
+            position: relative;
         }
         h1 {
             color: #ffcc00;
+            font-size: 4em; /* Titolo un po' più grande */
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 20px;
+        }
+        .quote {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2em;
+            text-align: center;
+            color: #ccc;
+            margin-bottom: 40px;
+        }
+        .quote-author {
+            font-size: 1em;
+            color: #888;
+        }
+        .divider {
+            width: 80%;
+            max-width: 600px;
+            border-top: 2px solid #333;
+            margin: 20px 0;
         }
         .container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
+            margin-top: 40px; /* Distanza tra i riquadri e la linea separatore */
         }
         .box {
             background-color: #222;
@@ -34,15 +57,57 @@
             text-align: center;
             width: 300px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.3s, z-index 0.3s, box-shadow 0.3s, background-color 0.3s, opacity 0.3s;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
         }
         .box:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+            transform: scale(1.2);
+            z-index: 2;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
+            background-color: #333;
+        }
+        .box:hover::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            border-radius: 12px;
+            box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+        }
+        .box:nth-child(1):hover::after {
+            box-shadow: 0 0 0 20px rgba(255, 0, 0, 0.1); /* Rosso */
+        }
+        .box:nth-child(2):hover::after {
+            box-shadow: 0 0 0 20px rgba(255, 140, 0, 0.1); /* Arancio */
+        }
+        .box:nth-child(3):hover::after {
+            box-shadow: 0 0 0 20px rgba(0, 255, 0, 0.1); /* Verde */
+        }
+        .box:nth-child(4):hover::after {
+            box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1); /* Bianco */
+        }
+        .box:hover ~ .box {
+            opacity: 0.5;
+        }
+        .box:hover + .box,
+        .box:hover + .box + .box,
+        .box:hover + .box + .box + .box {
+            opacity: 0.5;
+        }
+        .box:hover + .box:hover,
+        .box:hover + .box + .box:hover,
+        .box:hover + .box + .box + .box:hover {
+            opacity: 1;
         }
         .box a {
             text-decoration: none;
@@ -50,6 +115,7 @@
             font-weight: bold;
             display: flex;
             align-items: center;
+            font-size: 1.5em;
         }
         .dot {
             width: 15px;
@@ -59,36 +125,69 @@
             display: inline-block;
         }
         .dot1 {
-            background-color: #ffcc00;
+            background-color: #ff0000; /* Rosso */
         }
         .dot2 {
-            background-color: #00ffcc;
+            background-color: #ff8c00; /* Arancio */
         }
         .dot3 {
-            background-color: #ff00cc;
+            background-color: #00ff00; /* Verde */
+        }
+        .dot4 {
+            background-color: #ffffff; /* Bianco */
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .box:nth-child(4) {
+                margin-top: 40px;
+            }
+        }
+        @media (min-width: 769px) {
+            .box:nth-child(4) {
+                margin-top: 40px;
+                margin-left: 0;
+                margin-right: 0;
+                width: 100%;
+                max-width: 300px;
+                align-self: center;
+            }
         }
     </style>
 </head>
 <body>
 
-    <h1>Libri del Tacco</h1>
+    <h1>Tacco's Bay</h1>
+    <div class="quote">
+        "Do what you want cause a pirate is free"<br>
+        <span class="quote-author">- Anonimo</span>
+    </div>
+    <div class="divider"></div>
     <div class="container">
-        <div class="box" onclick="window.location.href='https://www.example.com/libro1'">
-            <a href="https://www.example.com/libro1">
+        <div class="box" onclick="window.location.href='https://www.example.com/mega'">
+            <a href="https://www.example.com/mega">
                 <span class="dot dot1"></span>
-                Libro 1
+                Mega
             </a>
         </div>
-        <div class="box" onclick="window.location.href='https://www.example.com/libro2'">
-            <a href="https://www.example.com/libro2">
+        <div class="box" onclick="window.location.href='https://www.example.com/hubscuola'">
+            <a href="https://www.example.com/hubscuola">
                 <span class="dot dot2"></span>
-                Libro 2
+                HubScuola
             </a>
         </div>
-        <div class="box" onclick="window.location.href='https://www.example.com/libro3'">
-            <a href="https://www.example.com/libro3">
+        <div class="box" onclick="window.location.href='https://www.example.com/loescher'">
+            <a href="https://www.example.com/loescher">
                 <span class="dot dot3"></span>
-                Libro 3
+                Loescher
+            </a>
+        </div>
+        <div class="box" onclick="window.location.href='https://www.example.com/altro'">
+            <a href="https://www.example.com/altro">
+                <span class="dot dot4"></span>
+                Altro
             </a>
         </div>
     </div>

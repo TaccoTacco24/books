@@ -9,7 +9,7 @@
             font-family: 'Arial', sans-serif;
             background-color: #121212;
             margin: 0;
-            padding: 0;
+            padding: 20px 0; /* Spazio solo sopra e nessuno sotto */
             color: #fff;
             overflow-x: hidden;
             position: relative;
@@ -17,7 +17,6 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            height: 100vh;
         }
         h1 {
             color: #ffcc00;
@@ -31,7 +30,7 @@
             font-size: 1.2em;
             text-align: center;
             color: #ccc;
-            margin-bottom: 40px;
+            margin-bottom: 20px; /* Ridotto lo spazio sotto la citazione */
         }
         .quote-author {
             font-size: 1em;
@@ -48,7 +47,8 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
-            margin-top: 40px; /* Distanza tra i riquadri e la linea separatore */
+            margin-top: 20px; /* Ridotto lo spazio sopra i riquadri */
+            height: calc(100vh - 180px); /* Adatta la larghezza per eliminare lo scroll */
         }
         .box {
             background-color: #222;
@@ -153,6 +153,7 @@
             .container {
                 flex-direction: column;
                 align-items: center;
+                height: auto;
             }
             .box {
                 width: 90%; /* Adatta la larghezza per mobile */

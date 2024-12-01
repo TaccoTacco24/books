@@ -11,7 +11,7 @@
             margin: 0;
             padding: 20px 0; /* Spazio solo sopra e nessuno sotto */
             color: #fff;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Impedisce lo scrolling orizzontale */
             position: relative;
             display: flex;
             flex-direction: column;
@@ -51,6 +51,7 @@
             margin-top: 20px; /* Ridotto lo spazio sopra i riquadri */
             width: 100%;
             max-width: 1200px; /* Aggiunto max-width per contenere il contenuto */
+            box-sizing: border-box; /* Assicura che il padding sia incluso nella larghezza */
         }
         .box {
             background-color: #222;
@@ -68,6 +69,7 @@
             flex-direction: column;
             position: relative;
             z-index: 1;
+            box-sizing: border-box; /* Assicura che il padding sia incluso nella larghezza */
         }
         .box:hover {
             transform: scale(1.2);

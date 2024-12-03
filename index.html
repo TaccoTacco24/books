@@ -9,9 +9,9 @@
             font-family: 'Arial', sans-serif;
             background-color: #121212;
             margin: 0;
-            padding: 20px 0; /* Spazio solo sopra e nessuno sotto */
+            padding: 20px 0;
             color: #fff;
-            overflow-x: hidden; /* Impedisce lo scrolling orizzontale */
+            overflow-x: hidden;
             position: relative;
             display: flex;
             flex-direction: column;
@@ -19,19 +19,27 @@
             justify-content: flex-start;
         }
         h1 {
-            color: #ffcc00;
-            font-size: 4em; /* Titolo un po' più grande */
+            font-size: 4em;
             font-family: 'Courier New', Courier, monospace;
             margin-bottom: 20px;
             margin-top: 20px;
-            text-align: center; /* Centra il titolo */
+            text-align: center;
         }
+        .google-t { color: #4285F4; }
+        .google-a { color: #EA4335; }
+        .google-c1 { color: #FBBC05; }
+        .google-c2 { color: #4285F4; }
+        .google-o { color: #34A853; }
+        .google-s { color: #EA4335; }
+        .google-b { color: #4285F4; }
+        .google-a2 { color: #FBBC05; }
+        .google-y { color: #34A853; }
         .quote {
             font-family: 'Courier New', Courier, monospace;
             font-size: 1.2em;
             text-align: center;
             color: #ccc;
-            margin-bottom: 20px; /* Ridotto lo spazio sotto la citazione */
+            margin-bottom: 20px;
         }
         .quote-author {
             font-size: 1em;
@@ -52,8 +60,8 @@
             width: 100%;
             max-width: 600px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            margin-bottom: 20px; /* Spazio sotto il widget */
-            box-sizing: border-box; /* Assicura che il padding sia incluso nella larghezza */
+            margin-bottom: 20px;
+            box-sizing: border-box;
         }
         .ip-widget h2 {
             color: #ffcc00;
@@ -74,8 +82,8 @@
             border: 1px solid #444;
             border-radius: 6px;
             padding: 8px 12px;
-            font-size: 1.5em; /* Testo più grande */
-            font-weight: bold; /* Testo in grassetto */
+            font-size: 1.5em;
+            font-weight: bold;
             color: #fff;
             margin: 0 5px;
         }
@@ -102,10 +110,10 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
-            margin-top: 20px; /* Ridotto lo spazio sopra i riquadri */
+            margin-top: 20px;
             width: 100%;
-            max-width: 1200px; /* Aggiunto max-width per contenere il contenuto */
-            box-sizing: border-box; /* Assicura che il padding sia incluso nella larghezza */
+            max-width: 1200px;
+            box-sizing: border-box;
         }
         .box {
             background-color: #222;
@@ -113,7 +121,7 @@
             border-radius: 12px;
             padding: 30px;
             text-align: center;
-            width: calc(33.333% - 40px); /* Calcolo per 3 riquadri in riga */
+            width: calc(33.333% - 40px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s, z-index 0.3s, box-shadow 0.3s, background-color 0.3s, opacity 0.3s;
             cursor: pointer;
@@ -123,7 +131,7 @@
             flex-direction: column;
             position: relative;
             z-index: 1;
-            box-sizing: border-box; /* Assicura che il padding sia incluso nella larghezza */
+            box-sizing: border-box;
         }
         .box:hover {
             transform: scale(1.2);
@@ -144,19 +152,19 @@
             pointer-events: none;
         }
         .box:nth-child(1):hover::after {
-            box-shadow: 0 0 0 20px rgba(255, 0, 0, 0.1); /* Rosso */
+            box-shadow: 0 0 0 20px rgba(255, 0, 0, 0.1);
         }
         .box:nth-child(2):hover::after {
-            box-shadow: 0 0 0 20px rgba(255, 140, 0, 0.1); /* Arancio */
+            box-shadow: 0 0 0 20px rgba(255, 140, 0, 0.1);
         }
         .box:nth-child(3):hover::after {
-            box-shadow: 0 0 0 20px rgba(0, 255, 0, 0.1); /* Verde */
+            box-shadow: 0 0 0 20px rgba(0, 255, 0, 0.1);
         }
         .box:nth-child(4):hover::after {
-            box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1); /* Bianco */
+            box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1);
         }
         .box:nth-child(5):hover::after {
-            box-shadow: 0 0 0 20px rgba(0, 0, 255, 0.1); /* Blu */
+            box-shadow: 0 0 0 20px rgba(0, 0, 255, 0.1);
         }
         .box:hover ~ .box {
             opacity: 0.5;
@@ -188,21 +196,11 @@
             margin-right: 10px;
             display: inline-block;
         }
-        .dot1 {
-            background-color: #ff0000; /* Rosso */
-        }
-        .dot2 {
-            background-color: #ff8c00; /* Arancio */
-        }
-        .dot3 {
-            background-color: #00ff00; /* Verde */
-        }
-        .dot4 {
-            background-color: #ffffff; /* Bianco */
-        }
-        .dot5 {
-            background-color: #0000ff; /* Blu */
-        }
+        .dot1 { background-color: #ff0000; }
+        .dot2 { background-color: #ff8c00; }
+        .dot3 { background-color: #00ff00; }
+        .dot4 { background-color: #ffffff; }
+        .dot5 { background-color: #0000ff; }
         @media (max-width: 768px) {
             body {
                 justify-content: flex-start;
@@ -212,18 +210,19 @@
                 flex-direction: column;
                 align-items: center;
                 width: 100%;
-                padding: 0 20px; /* Aggiunto padding per contenuto mobile */
+                padding: 0 20px;
             }
             .box {
-                width: calc(100% - 40px); /* Adatta la larghezza per mobile */
-                margin: 10px 0; /* Aggiunto margin per separare i riquadri */
+                width: calc(100% - 40px);
+                margin: 10px 0;
             }
         }
     </style>
 </head>
 <body>
-
-    <h1>Tacco's Bay</h1>
+    <h1>
+        <span class="google-t">T</span><span class="google-a">a</span><span class="google-c1">c</span><span class="google-c2">c</span><span class="google-o">o</span><span class="google-s">'s</span> <span class="google-b">B</span><span class="google-a2">a</span><span class="google-y">y</span>
+    </h1>
     <div class="quote">
         "Do what you want cause a pirate is free"<br>
         <span class="quote-author">- Anonimo</span>
@@ -277,7 +276,6 @@
     </div>
 
     <script>
-        // Funzione per ottenere l'indirizzo IP e i dettagli utilizzando ipinfo.io
         function getIPAddress() {
             fetch('https://ipinfo.io/json')
                 .then(response => response.json())
@@ -311,9 +309,7 @@
                 });
         }
 
-        // Chiama la funzione per ottenere l'indirizzo IP e i dettagli al caricamento della pagina
         window.onload = getIPAddress;
     </script>
-
 </body>
 </html>

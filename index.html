@@ -1,128 +1,576 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tacco's Bay</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            margin: 0;
+            padding: 20px 0;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        h1 {
+            font-size: 4em;
+            font-family: 'Courier New', Courier, monospace;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .google-t { color: #4285F4; }
+        .google-a { color: #EA4335; }
+        .google-c1 { color: #FBBC05; }
+        .google-c2 { color: #4285F4; }
+        .google-o { color: #34A853; }
+        .google-s { color: #EA4335; }
+        .google-b { color: #4285F4; }
+        .google-a2 { color: #FBBC05; }
+        .google-y { color: #34A853; }
+        .beta {
+            font-size: 0.5em;
+            color: #ccc;
+            vertical-align: middle;
+        }
+        .quote {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2em;
+            text-align: center;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+        .quote-author {
+            font-size: 1em;
+            color: #888;
+        }
+        .divider {
+            width: 80%;
+            max-width: 600px;
+            border-top: 2px solid #333;
+            margin: 20px 0;
+        }
+        .ip-widget {
+            background-color: #222;
+            border: 1px solid #444;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .ip-widget h2 {
+            color: #ffcc00;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .ip-widget p {
+            font-size: 1em;
+            color: #ccc;
+        }
+        .ip-widget .ip-details {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .ip-widget .ip-number {
+            background-color: #333;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff;
+            margin: 0 5px;
+        }
+        .ip-widget .info-section {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .ip-widget .info-section h3 {
+            color: #ffcc00;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .ip-widget .info-section .info-label {
+            font-weight: bold;
+        }
+        .ip-widget .info-section .flag {
+            width: 1.5em;
+            height: 1.5em;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        .speedtest-widget {
+            background-color: #222;
+            border: 1px solid #444;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .speedtest-widget h2 {
+            color: #ffcc00;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .stat-box {
+            background: #242444;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #007bff;
+            margin: 10px 0;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #2d2d4d;
+            margin-top: 20px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #007bff;
+            transition: width 0.1s linear;
+        }
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        button:disabled {
+            background: #2d2d4d;
+            cursor: not-allowed;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 1200px;
+            box-sizing: border-box;
+        }
+        .box {
+            background-color: #222;
+            border: 1px solid #444;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            width: calc(33.333% - 40px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, z-index 0.3s, box-shadow 0.3s, background-color 0.3s, opacity 0.3s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+            box-sizing: border-box;
+        }
+        .box:hover {
+            transform: scale(1.2);
+            z-index: 2;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.7);
+            background-color: #333;
+        }
+        .box:hover::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            border-radius: 12px;
+            box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+        }
+        .box:nth-child(1):hover::after {
+            box-shadow: 0 0 0 20px rgba(255, 0, 0, 0.1);
+        }
+        .box:nth-child(2):hover::after {
+            box-shadow: 0 0 0 20px rgba(255, 140, 0, 0.1);
+        }
+        .box:nth-child(3):hover::after {
+            box-shadow: 0 0 0 20px rgba(0, 255, 0, 0.1);
+        }
+        .box:nth-child(4):hover::after {
+            box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        .box:nth-child(5):hover::after {
+            box-shadow: 0 0 0 20px rgba(0, 0, 255, 0.1);
+        }
+        .box:hover ~ .box {
+            opacity: 0.5;
+        }
+        .box:hover + .box,
+        .box:hover + .box + .box,
+        .box:hover + .box + .box + .box,
+        .box:hover + .box + .box + .box + .box {
+            opacity: 0.5;
+        }
+        .box:hover + .box:hover,
+        .box:hover + .box + .box:hover,
+        .box:hover + .box + .box + .box:hover,
+        .box:hover + .box + .box + .box + .box:hover {
+            opacity: 1;
+        }
+        .box a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            font-size: 1.5em;
+        }
+        .dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: inline-block;
+        }
+        .dot1 { background-color: #ff0000; }
+        .dot2 { background-color: #ff8c00; }
+        .dot3 { background-color: #00ff00; }
+        .dot4 { background-color: #ffffff; }
+        .dot5 { background-color: #0000ff; }
+        @media (max-width: 768px) {
+            body {
+                justify-content: flex-start;
+                height: auto;
+            }
+            .container {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                padding: 0 20px;
+            }
+            .box {
+                width: calc(100% - 40px);
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
     <h1>
-      <span class="google-t">T</span><span class="google-a">a</span
-      ><span class="google-c1">c</span><span class="google-c2">c</span
-      ><span class="google-o">o</span><span class="google-s">'s</span>
-      <span class="google-b">B</span><span class="google-a2">a</span
-      ><span class="google-y">y</span>
-      <span class="beta">beta</span>
+        <span class="google-t">T</span><span class="google-a">a</span><span class="google-c1">c</span><span class="google-c2">c</span><span class="google-o">o</span><span class="google-s">'s</span> <span class="google-b">B</span><span class="google-a2">a</span><span class="google-y">y</span>
+        <span class="beta">beta</span>
     </h1>
     <div class="quote">
-      "Do what you want cause a pirate is free"<br />
-      <span class="quote-author">- Anonimo</span>
+        "Do what you want cause a pirate is free"<br>
+        <span class="quote-author">- Anonimo</span>
     </div>
     <div class="divider"></div>
     <div class="ip-widget" id="ip-widget">
-      <h2>Il tuo indirizzo IP</h2>
-      <div class="ip-details" id="ip-details">
-        <!-- Le cifre dell'IP verranno inserite qui -->
-      </div>
-      <div class="info-section">
-        <h3>Operatore</h3>
-        <p id="ip-operator">Caricamento in corso...</p>
-      </div>
-      <div class="info-section">
-        <h3>Posizione</h3>
-        <p id="ip-position">Caricamento in corso...</p>
-      </div>
+        <h2>Il tuo indirizzo IP</h2>
+        <div class="ip-details" id="ip-details">
+            <!-- Le cifre dell'IP verranno inserite qui -->
+        </div>
+        <div class="info-section">
+            <h3>Operatore</h3>
+            <p id="ip-operator">Caricamento in corso...</p>
+        </div>
+        <div class="info-section">
+            <h3>Posizione</h3>
+            <p id="ip-position">Caricamento in corso...</p>
+        </div>
     </div>
     <div class="speedtest-widget">
-      <h2>Speed Test</h2>
-      <div class="stats-container">
-<div class="stat-box">
-    <h3>Download</h3>
-    <div class="stat-value" id="downloadMinValue">-</div>
-    <div>Min (Mb/s)</div>
-</div>
-<div class="stat-box">
-    <h3>Download</h3>
-    <div class="stat-value" id="downloadAvgValue">-</div>
-    <div>Med (Mb/s)</div>
-</div>
-<div class="stat-box">
-    <h3>Download</h3>
-    <div class="stat-value" id="downloadMaxValue">-</div>
-    <div>Max (Mb/s)</div>
-</div>
-<div class="stat-box">
-    <h3>Upload</h3>
-    <div class="stat-value" id="uploadMinValue">-</div>
-    <div>Min (Mb/s)</div>
-</div>
-<div class="stat-box">
-    <h3>Upload</h3>
-    <div class="stat-value" id="uploadAvgValue">-</div>
-    <div>Med (Mb/s)</div>
-</div>
-<div class="stat-box">
-    <h3>Upload</h3>
-    <div class="stat-value" id="uploadMaxValue">-</div>
-    <div>Max (Mb/s)</div>
-</div>
-      </div>
+        <h2>Speed Test</h2>
+        <div class="stats-container">
+            <div class="stat-box">
+                <h3>Ping</h3>
+                <div class="stat-value" id="pingValue">-</div>
+                <div>ms</div>
+            </div>
+            <div class="stat-box">
+                <h3>Download</h3>
+                <div class="stat-value" id="downloadValue">-</div>
+                <div>Mb/s</div>
+            </div>
+            <div class="stat-box">
+                <h3>Upload</h3>
+                <div class="stat-value" id="uploadValue">-</div>
+                <div>Mb/s</div>
+                            </div>
+        </div>
 
-      <div class="progress-bar">
-        <div class="progress-fill"></div>
-      </div>
-
-      <div class="controls">
-        <button id="startTest">GO</button>
-      </div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+        
+        <div class="controls">
+            <button id="startTest">GO</button>
+        </div>
     </div>
 
     <div class="container">
-      <div
-        class="box"
-        onclick="window.location.href='https://drive.proton.me/urls/ME07K7WJ3W#gGLODkR0AB94'"
-      >
-        <a href="https://drive.proton.me/urls/ME07K7WJ3W#gGLODkR0AB94">
-          <span class="dot dot1"></span>
-          Mega
-        </a>
-      </div>
-      <div
-        class="box"
-        onclick="window.location.href='https://www.hubscuola.it/'"
-      >
-        <a href="https://www.hubscuola.it/">
-          <span class="dot dot2"></span>
-          HubScuola
-        </a>
-      </div>
-      <div
-        class="box"
-        onclick="window.location.href='https://iwpiu.loescher.it/iswintro'"
-      >
-        <a href="https://iwpiu.loescher.it/iswintro">
-          <span class="dot dot3"></span>
-          Loescher
-        </a>
-      </div>
-      <div class="box" onclick="window.location.href='https://libgen.is/'">
-        <a href="https://libgen.is/">
-          <span class="dot dot4"></span>
-          Library Genesis
-        </a>
-      </div>
-      <div
-        class="box"
-        onclick="window.location.href='https://annas-archive.org/'"
-      >
-        <a href="https://annas-archive.org/">
-          <span class="dot dot5"></span>
-          Anna's Archive
-        </a>
-      </div>
+        <div class="box" onclick="window.location.href='https://drive.proton.me/urls/ME07K7WJ3W#gGLODkR0AB94'">
+            <a href="https://drive.proton.me/urls/ME07K7WJ3W#gGLODkR0AB94">
+                <span class="dot dot1"></span>
+                Mega
+            </a>
+        </div>
+        <div class="box" onclick="window.location.href='https://www.hubscuola.it/'">
+            <a href="https://www.hubscuola.it/">
+                <span class="dot dot2"></span>
+                HubScuola
+            </a>
+        </div>
+        <div class="box" onclick="window.location.href='https://iwpiu.loescher.it/iswintro'">
+            <a href="https://iwpiu.loescher.it/iswintro">
+                <span class="dot dot3"></span>
+                Loescher
+            </a>
+        </div>
+        <div class="box" onclick="window.location.href='https://libgen.is/'">
+            <a href="https://libgen.is/">
+                <span class="dot dot4"></span>
+                Library Genesis
+            </a>
+        </div>
+        <div class="box" onclick="window.location.href='https://annas-archive.org/'">
+            <a href="https://annas-archive.org/">
+                <span class="dot dot5"></span>
+                Anna's Archive
+            </a>
+        </div>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+    <script>
+        function getIPAddress() {
+            fetch('https://ipinfo.io/json')
+                .then(response => response.json())
+                .then(data => {
+                    const ip = data.ip;
+                    const ipParts = ip.split('.');
+                    const ipDetails = document.getElementById('ip-details');
+                    const ipNumber = document.createElement('div');
+                    ipNumber.className = 'ip-number';
+                    ipNumber.textContent = ipParts.join('.');
+                    ipDetails.appendChild(ipNumber);
+
+                    document.getElementById('ip-operator').textContent = data.org || 'N/A';
+
+                    const positionElement = document.getElementById('ip-position');
+                    const country = data.country;
+                    const flagUrl = `https://www.mio-ip.it/wp-content/themes/mio-ip-child/img/svg_flags/${country.toLowerCase()}.svg`;
+                    const flagImg = document.createElement('img');
+                    flagImg.src = flagUrl;
+                    flagImg.className = 'flag';
+                    flagImg.alt = `Flag of ${data.country_name || 'Unknown'}`;
+
+                    positionElement.textContent = `${data.city}, ${data.region}, ${data.country}`;
+                    positionElement.appendChild(flagImg);
+                })
+                .catch(error => {
+                    document.getElementById('ip-details').textContent = 'Impossibile ottenere l\'indirizzo IP';
+                    document.getElementById('ip-operator').textContent = 'N/A';
+                    document.getElementById('ip-position').textContent = 'N/A';
+                    console.error('Errore nella richiesta:', error);
+                });
+        }
+
+        const testFiles = {
+            small: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/320px-PNG_transparency_demonstration_1.png',
+            medium: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/640px-PNG_transparency_demonstration_1.png',
+            large: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/1200px-PNG_transparency_demonstration_1.png'
+        };
+
+        async function measurePing(updateUI) {
+            const samples = 5;  // Increased number of samples
+            let totalPing = 0;
+            let successfulPings = 0;
+            
+            for (let i = 0; i < samples; i++) {
+                const startTime = performance.now();
+                try {
+                    const response = await fetch('https://www.cloudflare.com/cdn-cgi/trace', {
+                        method: 'GET',
+                        cache: 'no-store'
+                    });
+                    if (response.ok) {
+                        const endTime = performance.now();
+                        const currentPing = Math.round(endTime - startTime);
+                        totalPing += currentPing;
+                        successfulPings++;
+                        
+                        // Update UI with current ping
+                        document.getElementById('pingValue').textContent = currentPing;
+                        await updateUI('ping', currentPing, (i + 1) * (100/samples), 100);
+                    }
+                } catch (error) {
+                    console.error('Errore durante il ping:', error);
+                }
+                // Add a small delay between pings
+                await new Promise(resolve => setTimeout(resolve, 200));
+            }
+            
+            return successfulPings > 0 ? Math.round(totalPing / successfulPings) : 0;
+        }
+
+        async function measureDownloadSpeed(testDuration, startTime, updateUI) {
+            let maxSpeedMbps = 0;
+            let currentTestSize = 'small';
+            let lastSpeedMbps = 0;
+
+            while (performance.now() - startTime < testDuration) {
+                try {
+                    if (lastSpeedMbps > 50 && currentTestSize === 'small') {
+                        currentTestSize = 'medium';
+                    } else if (lastSpeedMbps > 100 && currentTestSize === 'medium') {
+                        currentTestSize = 'large';
+                    }
+
+                    const testFile = testFiles[currentTestSize] + '?r=' + Math.random();
+                    const startMeasurement = performance.now();
+                    const response = await fetch(testFile);
+                    const reader = response.body.getReader();
+                    let receivedLength = 0;
+
+                    while(true) {
+                        const {done, value} = await reader.read();
+                        if (done) break;
+                        receivedLength += value.length;
+                        const currentTime = performance.now();
+                        const measurementDuration = (currentTime - startMeasurement) / 1000;
+                        lastSpeedMbps = (receivedLength * 8) / (1024 * 1024 * measurementDuration);
+                        
+                        maxSpeedMbps = Math.max(maxSpeedMbps, lastSpeedMbps);
+                        await updateUI('download', lastSpeedMbps, currentTime - startTime, testDuration);
+                    }
+                } catch (error) {
+                    console.error('Errore download:', error);
+                }
+            }
+            return maxSpeedMbps;
+        }
+
+        async function measureUploadSpeed(testDuration, startTime, updateUI) {
+            let maxSpeedMbps = 0;
+            const chunkSize = 1024 * 1024; // 1MB
+
+            while (performance.now() - startTime < testDuration) {
+                try {
+                    const blob = new Blob([new ArrayBuffer(chunkSize)]);
+                    const formData = new FormData();
+                    formData.append('file', blob, 'test.bin');
+
+                    const startMeasurement = performance.now();
+                    await fetch('https://httpbin.org/post', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const endMeasurement = performance.now();
+
+                    const duration = (endMeasurement - startMeasurement) / 1000;
+                    const speedMbps = (chunkSize * 8) / (1024 * 1024 * duration);
+                    maxSpeedMbps = Math.max(maxSpeedMbps, speedMbps);
+
+                    const currentTime = performance.now();
+                    await updateUI('upload', speedMbps, currentTime - startTime, testDuration);
+                } catch (error) {
+                    console.error('Errore upload:', error);
+                }
+            }
+            return maxSpeedMbps;
+        }
+
+        async function updateUI(testType, speed, elapsed, testDuration) {
+            const progress = Math.min((elapsed / testDuration) * 100, 100);
+            document.querySelector('.progress-fill').style.width = progress + '%';
+            
+            if (testType === 'ping') {
+                document.getElementById('pingValue').textContent = speed + ' ms';
+            } else {
+                document.getElementById(testType + 'Value').textContent = speed.toFixed(2);
+            }
+        }
+
+        async function runTests() {
+            const startTestButton = document.getElementById('startTest');
+            const progressBar = document.querySelector('.progress-bar');
+            const testDuration = 10000;
+        
+            startTestButton.disabled = true;
+            document.getElementById('pingValue').textContent = '-';
+            document.getElementById('downloadValue').textContent = '-';
+            document.getElementById('uploadValue').textContent = '-';
+            document.querySelector('.progress-fill').style.width = '0%';
+            progressBar.style.display = 'block';
+
+            document.getElementById('pingValue').textContent = 'Misurando Ping...';
+            const ping = await measurePing(updateUI);
+            document.getElementById('pingValue').textContent = ping;
+
+            document.getElementById('downloadValue').textContent = 'Misurando Download...';
+            const startDownload = performance.now();
+            const maxDownloadSpeed = await measureDownloadSpeed(testDuration, startDownload, updateUI);
+            document.getElementById('downloadValue').textContent = maxDownloadSpeed.toFixed(2);
+
+                        document.getElementById('uploadValue').textContent = 'Misurando Upload...';
+            const startUpload = performance.now();
+            const maxUploadSpeed = await measureUploadSpeed(testDuration, startUpload, updateUI);
+            document.getElementById('uploadValue').textContent = maxUploadSpeed.toFixed(2);
+
+            progressBar.style.display = 'none';
+            startTestButton.disabled = false;
+        }
+
+        document.getElementById('startTest').addEventListener('click', runTests);
+
+        window.onload = getIPAddress;
+    </script>
+</body>
 </html>

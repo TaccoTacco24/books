@@ -319,12 +319,52 @@
                 margin-top: 20px;
             }
             .chart-box {
-                width: 45%;
+                width: 60%;
                 background-color: #1a1a1a;
                 padding: 20px;
                 border-radius: 10px;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             }
+        }
+
+        /* Stili specifici per schermi rotondi */
+        body.round-screen {
+            background-color: #1a1a1a;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        body.round-screen h1 {
+            font-size: 3em;
+            margin: 20px;
+        }
+        body.round-screen .quote {
+            font-size: 1em;
+            margin: 10px;
+        }
+        body.round-screen .ip-widget, body.round-screen .vpn-widget, body.round-screen .speedtest-widget {
+            width: 80%;
+            margin: 10px auto;
+        }
+        body.round-screen .container {
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+            margin: 10px auto;
+        }
+        body.round-screen .box {
+            width: 100%;
+            margin: 10px 0;
+        }
+        body.round-screen .chart-container {
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+            margin: 10px auto;
+        }
+        body.round-screen .chart-box {
+            width: 100%;
+            margin: 10px 0;
         }
     </style>
 </head>
@@ -729,6 +769,11 @@
             const ip = await getIPAddress();
             if (ip) {
                 checkVPN(ip);
+            }
+
+            // Rilevamento schermo rotondo
+            if (window.matchMedia('(display-mode: fullscreen)').matches && window.matchMedia('(orientation: portrait)').matches) {
+                document.body.classList.add('round-screen');
             }
         };
     </script>

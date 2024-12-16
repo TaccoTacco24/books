@@ -393,7 +393,7 @@
             <p id="ip-position">Caricamento in corso...</p>
         </div>
         <div class="info-section">
-            <h3>VPN</h3>
+            <h3>Internet ti vede sotto VPN?</h3>
             <p id="vpn-status">Caricamento in corso...</p>
         </div>
     </div>
@@ -537,7 +537,7 @@
                 const response = await fetch(`https://ipinfo.io/${ip}/json`);
                 const data = await response.json();
                 const vpnStatus = document.getElementById('vpn-status');
-                vpnStatus.textContent = data.hosting ? 'VPN attiva' : 'VPN non attiva';
+                vpnStatus.textContent = data.hosting ? 'VPN rilevata' : 'VPN non rilevata';
             } catch (error) {
                 document.getElementById('vpn-status').textContent = 'Impossibile verificare la VPN';
                 console.error('Errore nella richiesta:', error);

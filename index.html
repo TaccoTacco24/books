@@ -255,6 +255,12 @@
         .box:nth-child(7):hover::after {
             box-shadow: 0 0 0 20px rgba(128, 0, 128, 0.3);
         }
+        .box:nth-child(8):hover::after {
+            box-shadow: 0 0 0 20px rgba(255, 165, 0, 0.1);
+        }
+        .box:nth-child(9):hover::after {
+            box-shadow: 0 0 0 20px rgba(169, 169, 169, 0.1);
+        }
         .box:hover ~ .box {
             opacity: 0.5;
         }
@@ -292,6 +298,8 @@
         .dot5 { background-color: #0000ff; }
         .dot6 { background-color: #4d80e4; }
         .dot7 { background-color: #800080; }
+        .dot8 { background-color: #ffa500; }
+        .dot9 { background-color: #d3d3d3; }
         @media (max-width: 768px) {
             body {
                 justify-content: flex-start;
@@ -491,6 +499,18 @@
             <a href="https://bookracy.ru/?q=" target="_blank">
                 <span class="dot dot7"></span>
                 Bookracy
+            </a>
+        </div>
+        <div class="box" onclick="window.open('https://www.reddit.com/r/zlibrary/wiki/index/access/#wiki_how_to_access_zlibrary_through_your_browser', '_blank')">
+            <a href="https://www.reddit.com/r/zlibrary/wiki/index/access/#wiki_how_to_access_zlibrary_through_your_browser" target="_blank">
+                <span class="dot dot8"></span>
+                Zlibrary Reddit
+            </a>
+        </div>
+        <div class="box" onclick="window.open('https://en.wikipedia.org/wiki/Z-Library', '_blank')">
+            <a href="https://en.wikipedia.org/wiki/Z-Library" target="_blank">
+                <span class="dot dot9"></span>
+                Zlibrary Wikipedia
             </a>
         </div>
     </div>
@@ -756,7 +776,7 @@
                             beginAtZero: true,
                             title: {
                                 display: true,
-                            text: 'Speed (Mb/s)'
+                                text: 'Speed (Mb/s)'
                             }
                         }
                     }

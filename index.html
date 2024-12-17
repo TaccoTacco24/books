@@ -261,6 +261,9 @@
         .box:nth-child(9):hover::after {
             box-shadow: 0 0 0 20px rgba(80, 80, 80, 0.1);
         }
+        .box:nth-child(10):hover::after {
+            box-shadow: 0 0 0 20px rgba(255, 182, 193, 0.3);
+        }
         .box:hover ~ .box {
             opacity: 0.5;
         }
@@ -300,6 +303,7 @@
         .dot7 { background-color: #800080; }
         .dot8 { background-color: #ffa500; }
         .dot9 { background-color: #808080; }
+        .dot10 { background-color: #ffc0cb; } /* New dot color for myZanichelli */
         @media (max-width: 768px) {
             body {
                 justify-content: flex-start;
@@ -511,6 +515,12 @@
             <a href="https://en.wikipedia.org/wiki/Z-Library" target="_blank">
                 <span class="dot dot9"></span>
                 Zlibrary Wikipedia
+            </a>
+        </div>
+        <div class="box" onclick="window.open('https://my.zanichelli.it/dashboard/home', '_blank')">
+            <a href="https://my.zanichelli.it/dashboard/home" target="_blank">
+                <span class="dot dot10"></span>
+                myZanichelli
             </a>
         </div>
     </div>

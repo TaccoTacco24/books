@@ -264,6 +264,9 @@
         .box:nth-child(10):hover::after {
             box-shadow: 0 0 0 20px rgba(255, 182, 193, 0.3);
         }
+        .box:nth-child(11):hover::after {
+            box-shadow: 0 0 0 20px rgba(173, 216, 230, 0.3); /* Light blue hover effect */
+        }
         .box:hover ~ .box {
             opacity: 0.5;
         }
@@ -304,6 +307,7 @@
         .dot8 { background-color: #ffa500; }
         .dot9 { background-color: #808080; }
         .dot10 { background-color: #ffc0cb; } /* New dot color for myZanichelli */
+        .dot11 { background-color: #add8e6; } /* New dot color for Play Libri */
         @media (max-width: 768px) {
             body {
                 justify-content: flex-start;
@@ -521,6 +525,12 @@
             <a href="https://my.zanichelli.it/dashboard/home" target="_blank">
                 <span class="dot dot10"></span>
                 myZanichelli
+            </a>
+        </div>
+        <div class="box" onclick="window.open('https://play.google.com/books', '_blank')">
+            <a href="https://play.google.com/books" target="_blank">
+                <span class="dot dot11"></span>
+                Play Libri (need G-auth)
             </a>
         </div>
     </div>
